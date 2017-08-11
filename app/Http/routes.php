@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index');
+
+/*Route::get('admin', 'PostAdminController@index');
+Route::get('admin/create', 'PostAdminController@create');*/
+Route::post('admin/posts/store',['as'=> 'admin.posts.store' , 'uses' => 'PostAdminController@store'] );
+Route::get('admin',['as'=> 'admin.index' , 'uses' => 'PostAdminController@index'] );
+Route::get('admin/posts/create',['as'=> 'admin.posts.create' , 'uses' => 'PostAdminController@create'] );
+
