@@ -17,4 +17,10 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Tag', 'posts_tags');
     }
+    public function  getTagsListAttribute()
+    {
+        $tagsName = $this->tags()->lists('name')->all();
+        //dd($tagsName);
+        return implode(',',$tagsName);
+    }
 }
